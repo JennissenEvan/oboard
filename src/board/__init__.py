@@ -1,1 +1,1 @@
-from .board import Board, BoardVector, BoardObject, vector
+from .board import Board, BoardVector, BoardObject, vector, BoardValue

@@ -79,6 +79,13 @@ class BoardObject:
         return self.board.move_object(self, transform)
 
 
+class BoardValue(BoardObject):
+    def __init__(self, val):
+        super().__init__()
+
+        self.value = val
+
+
 class Board:
     def __init__(self, width, height):
         self._width = width
@@ -132,6 +139,11 @@ class Board:
         self._objects[pos] = obj
 
         return True
+
+    def emplace_value(self, val, pos: BoardVector) -> BoardValue:
+        obj = BoardValue(val)
+        self.emplace_object(obj, pos)
+        return obj
 
     def move_object_to(self, obj: BoardObject, pos: BoardVector):
         if self._is_out_of_bounds(pos):
