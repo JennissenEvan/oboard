@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 class BoardVector:
     def __init__(self, x, y):
         self._x: int = x
