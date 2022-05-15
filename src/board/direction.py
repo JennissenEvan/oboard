@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from enum import Enum
 from functools import cached_property
-from .board import vector
+from .vector import vector
 
 
 class Direction(Enum):
