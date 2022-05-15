@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from bidict import bidict
 
+from .vector import BoardVector
+
 
 class BoardException(Exception):
     pass
