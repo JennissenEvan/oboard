@@ -34,6 +34,10 @@ class BoardVector:
     def y(self) -> int:
         return self._y
 
+    @cached_property
+    def adjacent(self):
+        return tuple(self + d.vector for d in Direction)
+
     def pair(self) -> tuple[int, int]:
         return self.x, self.y
 
