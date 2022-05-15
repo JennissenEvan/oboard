@@ -37,11 +37,17 @@ class BoardObject:
     def board(self):
         return self._board
 
-    def get_pos(self):
+    def get_pos(self) -> BoardVector:
         return self.board.get_object_pos(self)
 
     def move(self, transform: BoardVector):
         return self.board.move_object(self, transform)
+
+    def adjacent(self):
+        for pos in self.get_pos().adjacent:
+            obj = self.board.get_object_at(pos)
+            if obj is not None:
+                yield pos, obj
 
 
 class BoardValue(BoardObject):
