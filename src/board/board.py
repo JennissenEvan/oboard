@@ -31,7 +31,7 @@ class ObjectNotFound(BoardException):
 
 class BoardObject:
     def __init__(self):
-        self._board: Board = None
+        self._board: Board | None = None
 
     @property
     def board(self):
