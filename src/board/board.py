@@ -43,11 +43,17 @@ class BoardObject:
     def move(self, transform: BoardVector):
         return self.board.move_object(self, transform)
 
-    def adjacent(self):
-        for pos in self.get_pos().adjacent:
+    def _near(self, pos_iter):
+        for pos in pos_iter:
             obj = self.board.get_object_at(pos)
             if obj is not None:
                 yield pos, obj
+
+    def adjacent(self):
+        return self._near(self.get_pos().adjacent)
+
+    def neighboring(self):
+        return self._near(self.get_pos().neighboring)
 
 
 class BoardValue(BoardObject):

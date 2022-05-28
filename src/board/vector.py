@@ -38,6 +38,10 @@ class BoardVector:
     def adjacent(self):
         return tuple(self + d.vector for d in Direction)
 
+    @cached_property
+    def neighboring(self):
+        return tuple(self + d.vector for d in Direction if d.cardinal)
+
     def pair(self) -> tuple[int, int]:
         return self.x, self.y
 
@@ -80,6 +84,10 @@ class Direction(Enum):
     @cached_property
     def degree(self):
         return 45 * self.value
+
+    @cached_property
+    def cardinal(self):
+        return len(self.name) == 1
 
     def __add__(self, other: int):
         return Direction((self.value + other) % 8)
