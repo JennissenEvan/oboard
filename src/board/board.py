@@ -77,11 +77,11 @@ class Board:
     def height(self):
         return self._height
 
-    def _is_out_of_bounds(self, pos: BoardVector):
+    def is_out_of_bounds(self, pos: BoardVector):
         return pos.x not in range(self.width) or pos.y not in range(self.height)
 
     def _check_out_of_bounds(self, pos: BoardVector):
-        if self._is_out_of_bounds(pos):
+        if self.is_out_of_bounds(pos):
             raise OutOfBoundsExcepion("Given position is out of bounds.")
 
     def remove_object(self, obj: BoardObject):
@@ -123,7 +123,7 @@ class Board:
         return obj
 
     def move_object_to(self, obj: BoardObject, pos: BoardVector):
-        if self._is_out_of_bounds(pos):
+        if self.is_out_of_bounds(pos):
             return False
 
         if self.get_object_at(pos) is not None:
